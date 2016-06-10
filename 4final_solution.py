@@ -80,5 +80,5 @@ pred_cas = RF_cas * RF_lb_cas +  RF_lf_cas * RF_lf_lb_cas
 pred_reg = XBG_reg * XGB_lb_reg + RF_reg * RF_lb_reg 
 ## make submission 
 sub = pd.concat([dates_lb, pred_cas+pred_reg], axis = 1, ignore_index = True)
-sub.to_csv('submissions//2.csv', index = False, header = ['datetime','count'])
+sub.to_csv('submissions//3.csv', index = False, header = ['datetime','count'])
 

@@ -39,8 +39,7 @@ def train_XGB(path, X_tv,y_tv,dates_tv,day_test,param_final, best_ntree_limits):
         print('year {}, month {}'.format(y_m[0],y_m[1]), flush = True)
         print('learning from {} to {}'.format(dates_tv[train_ind].min(), dates_tv[train_ind].max()))
         param['seed'] = 13
-        weights = np.power(np.arange(train_ind.sum(),1,-1),param['p'])
-        dtrain = xgb.DMatrix(X_tv[train_ind], label = y_tv.loc[train_ind,'lregistered'],weight = weights)      
+        dtrain = xgb.DMatrix(X_tv[train_ind], label = y_tv.loc[train_ind,'lregistered'])     
         bst = xgb.train(param, dtrain, num_boost_round = best_ntree_limits[y_m])	
         bst.save_model(os.path.join(path,str(y_m[0])+"_"+str(y_m[1])))
  
